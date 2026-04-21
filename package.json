@@ -1,5 +1,5 @@
 {
-  "name": "karolkonoppl-webiste",
+  "name": "karolkonop-webiste",
   "version": "0.0.1",
   "private": true,
   "description": "karol.konop.pl website",
@@ -7,18 +7,21 @@
   "license": "ISC",
   "author": "Karol Konop",
   "type": "commonjs",
-  "main": "karolkonoppl-website-express-app.js",
+  "main": "karolkonop-website-express-app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^11.0.0",
+    "copy-webpack-plugin": "^14.0.0",
     "html-webpack-plugin": "^5.5.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
+    "webpack-dev-server": "^5.2.3",
     "webpack-merge": "^5.9.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
   }
 }

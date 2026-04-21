@@ -1,0 +1,86 @@
+// Variable overrides first
+$primary: #f7f7f7;
+$enable-shadows: true;
+$enable-rounded: false;
+$enable-dark-mode: false;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+
+$font-family-base: 'Spline Sans Mono', sans-serif;
+
+
+
+// import html5 boilerplate css
+@import "../css/html5_style.css";
+// Then import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.navbar {
+	text-shadow: none !important;
+	opacity: 1 !important;
+	transition: top 2s ease-out, opacity 2s ease-out;
+
+	.nav-link {
+		font-weight: lighter;
+		text-align: center;
+		border-bottom: 1px solid rgba(0, 0, 0, 0);
+
+		&:hover{
+			// text-decoration: underline;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.5) !important;
+			transition: border-bottom 0.3s ease-out;
+		}
+
+		&.active {
+			// text-decoration: underline;
+			border-bottom: 1px solid #fff;
+		}
+	}
+
+	.navbar-brand{
+		font-family: 'Sofia Sans Condensed', sans-serif;
+		font-weight: bolder;
+		line-height: 0.8em;
+	}
+}
+
+.page{
+	min-height: 100vh;
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	h1{
+		font-family: 'Sofia Sans Condensed', sans-serif;
+		text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
+	}
+}
+
+#page-1{
+	background-image: url('../img/page-1_98400035.JPG');
+	background-size: 80vh;
+
+	.container{
+		
+	}
+
+	h1{
+		position: relative;
+		top:25vh;
+		border-bottom: 10px solid #f9cb9f;
+		// text-transform: uppercase;
+	}
+	
+	p{
+		// text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+		@extend .fs-4;
+	}
+}
