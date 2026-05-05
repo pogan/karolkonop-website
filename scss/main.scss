@@ -122,6 +122,16 @@ hr {
 	}
 }
 
+@include media-breakpoint-down(sm) {
+  #homepage-links {
+    flex-direction: column;
+	align-items: center !important;
+	a{
+		margin: 10px 0;
+	}
+  }
+}
+
 #page-whatido {
 	align-items: center;
 	min-height: 100vh;
