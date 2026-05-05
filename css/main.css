@@ -1,6 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap&family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap");
 @import "../css/html5_style.css";
 /*!
  * Bootstrap  v5.3.8 (https://getbootstrap.com/)
@@ -77,7 +76,7 @@
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: "Spline Sans Mono", sans-serif;
+  --bs-body-font-family: "Spline Sans Mono", monospace;
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
@@ -600,13 +599,13 @@ progress {
   }
 }
 
-.display-6 {
+.display-6, #page-whoisitfor ul li {
   font-weight: 300;
   line-height: 1.2;
   font-size: calc(1.375rem + 1.5vw);
 }
 @media (min-width: 1200px) {
-  .display-6 {
+  .display-6, #page-whoisitfor ul li {
     font-size: 2.5rem;
   }
 }
@@ -5419,7 +5418,7 @@ textarea.form-control-lg {
   z-index: var(--bs-tooltip-zindex);
   display: block;
   margin: var(--bs-tooltip-margin);
-  font-family: "Spline Sans Mono", sans-serif;
+  font-family: "Spline Sans Mono", monospace;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5528,7 +5527,7 @@ textarea.form-control-lg {
   z-index: var(--bs-popover-zindex);
   display: block;
   max-width: var(--bs-popover-max-width);
-  font-family: "Spline Sans Mono", sans-serif;
+  font-family: "Spline Sans Mono", monospace;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -7995,7 +7994,7 @@ textarea.form-control-lg {
   font-size: calc(1.3rem + 0.6vw) !important;
 }
 
-.fs-4, #page-1 p {
+.fs-4 {
   font-size: calc(1.275rem + 0.3vw) !important;
 }
 
@@ -11616,7 +11615,7 @@ textarea.form-control-lg {
   .fs-3 {
     font-size: 1.75rem !important;
   }
-  .fs-4, #page-1 p {
+  .fs-4 {
     font-size: 1.5rem !important;
   }
 }
@@ -11655,10 +11654,22 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6,
+#page-whoisitfor ul li,
+.display-7 {
+  font-family: "Sofia Sans Condensed", sans-serif;
+}
+
 .navbar {
   text-shadow: none !important;
   opacity: 1 !important;
   transition: top 2s ease-out, opacity 2s ease-out;
+  background-color: #fff;
 }
 .navbar .nav-link {
   font-weight: lighter;
@@ -11678,29 +11689,126 @@ textarea.form-control-lg {
   line-height: 0.8em;
 }
 
+.newsletter-header {
+  font-family: "Sofia Sans Condensed", sans-serif !important;
+  font-size: 1.5em;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
 .page {
-  min-height: 100vh;
   width: 100vw;
   margin: 0;
-  padding: 0;
+  padding: 80px 0 0 0;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  font-weight: 300;
+  font-size: 1rem;
 }
 .page h1, .page .h1 {
+  text-transform: uppercase;
+}
+.page h1, .page .h1,
+.page h2,
+.page .h2 {
   font-family: "Sofia Sans Condensed", sans-serif;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
 }
 
-#page-1 {
-  background-image: url("../img/page-1_98400035.JPG");
-  background-size: 80vh;
+hr {
+  border-bottom: 10px solid #ffdcbb;
+  margin: 0 0 20px 0;
+  opacity: 1;
+  color: transparent;
 }
-#page-1 h1, #page-1 .h1 {
+
+#page-home {
+  background-image: url("../img/karolkonop_photo_1.JPG");
+  background-size: 80vh;
+  margin-top: -50px;
+}
+#page-home .wrap {
+  display: block;
   position: relative;
   top: 25vh;
-  border-bottom: 10px solid #f9cb9f;
+}
+#page-home .wrap h1, #page-home .wrap .h1 {
+  font-weight: 500;
+  text-shadow: none;
+}
+#page-home .wrap h2, #page-home .wrap .h2 {
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+
+#page-whatido {
+  align-items: center;
+  min-height: 100vh;
+}
+#page-whatido .container-fluid, #page-whatido .container-sm, #page-whatido .container-md, #page-whatido .container-lg, #page-whatido .container-xl, #page-whatido .container-xxl {
+  background-image: url(../img/karolkonop_photo_7_b.JPG);
+  background-size: cover;
+  background-position: bottom center;
+  padding: 40px;
+  color: #f7f7f7;
+  text-shadow: 1px 1px 0px #000;
+}
+
+ul {
+  font-size: 1.1em;
+}
+ul li {
+  margin: 10px 0;
+  line-height: 1.1em;
+}
+
+#page-offer .card {
+  border: 0;
+  margin: 10pt 0;
+  background-color: #fdfdfd;
+}
+#page-offer .card-title {
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0;
+}
+#page-offer .card-header {
+  border-bottom: 2px solid #ffdcbb;
+}
+
+#page-about img {
+  max-width: 100%;
+}
+
+#page-contact img {
+  max-width: 100%;
+}
+
+#footer {
+  border-top: 1px solid #333;
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-size: 1.2em;
+}
+#footer li:hover {
+  text-decoration: underline;
+}
+
+#bg-stripe-1 {
+  background-image: url("../img/karolkonop_photo_5.JPG");
+  background-position: center 500px;
+  height: 100px;
+  margin-top: 20px;
+}
+
+#bg-stripe-2 {
+  background-image: url("../img/karolkonop_photo_11.JPG");
+  background-position: center 740px;
+  height: 400px;
+  margin-top: 20px;
 }/*# sourceMappingURL=main.css.map */
