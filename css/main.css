@@ -11798,6 +11798,9 @@ ul li {
 #page-contact img {
   max-width: 100%;
 }
+#page-contact form {
+  background-color: aliceblue;
+}
 
 #footer {
   border-top: 1px solid #333;
