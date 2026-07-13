@@ -258,7 +258,7 @@ hr {
 // instead of relying on a text-shadow.
 @mixin photo-backdrop($image, $scrim: 0.55) {
 	position: relative;
-	background-image: url($image);
+	background-image: linear-gradient(rgba($ink, $scrim), rgba($ink, $scrim)), url($image);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
