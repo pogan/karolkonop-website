@@ -27,6 +27,17 @@ module.exports = {
 				NODE_ENV: 'production',
 			},
 
+			// Do NOT run this with --watch on the server. PM2 writes its logs into
+			// logs/ below, which sits inside cwd — so a watcher on cwd sees the log
+			// write, restarts the app, the app logs its startup line, and you have an
+			// infinite restart loop. Deploys here are deliberate: git pull, then
+			// `pm2 restart karolkonop-website --update-env`.
+			//
+			// ignore_watch is kept so that if someone does enable watching, the loop
+			// doesn't happen.
+			watch: false,
+			ignore_watch: ['logs', 'node_modules', '.git', 'public', 'assets', '.env'],
+
 			autorestart: true,
 			max_restarts: 10,
 			// The app exits on a missing .env. Without this backoff PM2 would spin
