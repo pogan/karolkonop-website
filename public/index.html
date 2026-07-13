@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Karol Konop · Menedżer Kreatywny — strategia i wizerunek dla artystów</title>
+	<meta name="description"
+		content="Karol Konop · Menedżer Kreatywny · Strategia, wizerunek i narzędzia online dla artystów." />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@400;600;700&family=Spline+Sans+Mono:wght@300;400;500&display=swap">
+	<link rel="stylesheet" href="css/main.css">
+
+	<!-- LCP: hero is a CSS background-image, discovered late without this. -->
+	<link rel="preload" as="image" href="/img/karolkonop_photo_1.webp" fetchpriority="high">
+
+	<script src="js/app.js" defer></script>
+
+	<link rel="canonical" href="https://karol.konop.pl/" />
+
+	<meta property="og:locale" content="pl_PL" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Karol Konop · Menedżer Kreatywny" />
+	<meta property="og:title" content="Karol Konop · Menedżer Kreatywny" />
+	<meta property="og:description" content="Karol Konop · Strategia, wizerunek i narzędzia online dla artystów." />
+	<meta property="og:url" content="https://karol.konop.pl/" />
+	<meta property="og:image" content="https://karol.konop.pl/meta.jpg" />
+	<meta property="og:image:secure_url" content="https://karol.konop.pl/meta.jpg" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="Karol Konop · Menedżer Kreatywny" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Karol Konop · Menedżer Kreatywny" />
+	<meta name="twitter:description" content="Karol Konop · Strategia, wizerunek i narzędzia online dla artystów." />
+	<meta name="twitter:image" content="https://karol.konop.pl/meta.jpg" />
+
+	<link rel="icon" href="/favicon.ico" sizes="any">
+	<link rel="icon" href="/icon.svg" type="image/svg+xml">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<link rel="manifest" href="/site.webmanifest">
+
+	<meta name="theme-color" content="#f7f7f7">
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "WebSite",
+				"@id": "https://karol.konop.pl/#website",
+				"url": "https://karol.konop.pl/",
+				"name": "Karol Konop · Menedżer Kreatywny",
+				"inLanguage": "pl-PL",
+				"publisher": { "@id": "https://karol.konop.pl/#karol" }
+			},
+			{
+				"@type": "Person",
+				"@id": "https://karol.konop.pl/#karol",
+				"name": "Karol Konop",
+				"jobTitle": "Menedżer Kreatywny",
+				"url": "https://karol.konop.pl/",
+				"image": "https://karol.konop.pl/img/karolkonop_portret.webp",
+				"email": "karol.konop@gmail.com",
+				"description": "Menedżer artystyczny i inżynier informatyk. Pomagam artystom zamienić wizję w skuteczny plan działania.",
+				"knowsLanguage": ["pl", "en"],
+				"knowsAbout": [
+					"zarządzanie zespołem muzycznym",
+					"strategia marki artysty",
+					"promocja premiery singla i EP",
+					"Electronic Press Kit",
+					"booking i komunikacja z mediami",
+					"strony internetowe dla zespołów"
+				],
+				"award": [
+					"O!Lśnienie 2026 — Muzyka popularna (album „Przed Zmierzchem”, zespół CHRUST)",
+					"Nominacja do Fryderyka 2026 — Album Roku Muzyka Korzeni (zespół CHRUST)",
+					"Finalista polskich kwalifikacji do Eurowizji 2025 (zespół CHRUST)"
+				],
+				"worksFor": {
+					"@type": "MusicGroup",
+					"name": "CHRUST"
+				},
+				"sameAs": [
+					"https://www.facebook.com/karol.z.chrustu",
+					"https://www.instagram.com/karol_z_chrustu/",
+					"https://www.tiktok.com/@karol.z.chrustu",
+					"https://www.youtube.com/@karol_z_chrustu"
+				]
+			},
+			{
+				"@type": "ProfessionalService",
+				"@id": "https://karol.konop.pl/#service",
+				"name": "Karol Konop · Menedżer Kreatywny",
+				"url": "https://karol.konop.pl/",
+				"image": "https://karol.konop.pl/meta.jpg",
+				"email": "karol.konop@gmail.com",
+				"provider": { "@id": "https://karol.konop.pl/#karol" },
+				"areaServed": { "@type": "Country", "name": "Polska" },
+				"availableLanguage": ["pl", "en"],
+				"priceRange": "300–5000 PLN",
+				"currenciesAccepted": "PLN",
+				"description": "Strategia, wizerunek, EPK, strony internetowe i wsparcie doradcze dla zespołów i artystów.",
+				"hasOfferCatalog": {
+					"@type": "OfferCatalog",
+					"name": "Oferta",
+					"itemListElement": [
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "Konsultacja menedżerska",
+								"description": "Rozmowa online, telefoniczna lub osobista skupiona na aktualnych potrzebach i celach zespołu. Diagnoza, burza mózgów i wskazówki wraz z pisemnym podsumowaniem.",
+								"provider": { "@id": "https://karol.konop.pl/#karol" }
+							},
+							"priceCurrency": "PLN",
+							"price": "300",
+							"url": "https://karol.konop.pl/#page-offer",
+							"availability": "https://schema.org/InStock"
+						},
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "Audyt i kierunek",
+								"description": "Analiza marki, komunikacji, obecności online i materiałów zespołu wraz z roadmapą działań na 30 dni.",
+								"provider": { "@id": "https://karol.konop.pl/#karol" }
+							},
+							"priceCurrency": "PLN",
+							"priceSpecification": {
+								"@type": "PriceSpecification",
+								"priceCurrency": "PLN",
+								"minPrice": "1500"
+							},
+							"url": "https://karol.konop.pl/#page-offer",
+							"availability": "https://schema.org/InStock"
+						},
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "Strategia singla, EP lub trasy",
+								"description": "Plan promocji premiery: historia, komunikaty, materiały, kanały, harmonogram i CTA.",
+								"provider": { "@id": "https://karol.konop.pl/#karol" }
+							},
+							"priceCurrency": "PLN",
+							"priceSpecification": {
+								"@type": "PriceSpecification",
+								"priceCurrency": "PLN",
+								"minPrice": "2500"
+							},
+							"url": "https://karol.konop.pl/#page-offer",
+							"availability": "https://schema.org/InStock"
+						},
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "EPK i materiały bookingowe",
+								"description": "Press Kit online i do druku, bio, opis koncertowy, one-sheet oraz szablony komunikacji do mediów i organizatorów.",
+								"provider": { "@id": "https://karol.konop.pl/#karol" }
+							},
+							"priceCurrency": "PLN",
+							"priceSpecification": {
+								"@type": "PriceSpecification",
+								"priceCurrency": "PLN",
+								"minPrice": "2500"
+							},
+							"url": "https://karol.konop.pl/#page-offer",
+							"availability": "https://schema.org/InStock"
+						},
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "Strona internetowa dla zespołu",
+								"description": "Projekt i wdrożenie strony: struktura, copy, muzyka, koncerty, media, kontakt, newsletter i SEO.",
+								"provider": { "@id": "https://karol.konop.pl/#karol" }
+							},
+							"priceCurrency": "PLN",
+							"priceSpecification": {
+								"@type": "PriceSpecification",
+								"priceCurrency": "PLN",
+								"minPrice": "5000"
+							},
+							"url": "https://karol.konop.pl/#page-offer",
+							"availability": "https://schema.org/InStock"
+						},
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "Stałe wsparcie doradcze",
+								"description": "Dwa spotkania miesięcznie, bieżące konsultacje, feedback do komunikacji i wsparcie przy premierach oraz bookingu.",
+								"provider": { "@id": "https://karol.konop.pl/#karol" }
+							},
+							"priceCurrency": "PLN",
+							"priceSpecification": {
+								"@type": "UnitPriceSpecification",
+								"priceCurrency": "PLN",
+								"minPrice": "1200",
+								"unitCode": "MON",
+								"billingIncrement": 1
+							},
+							"url": "https://karol.konop.pl/#page-offer",
+							"availability": "https://schema.org/InStock"
+						}
+					]
+				}
+			},
+			{
+				"@type": "FAQPage",
+				"@id": "https://karol.konop.pl/#faq",
+				"inLanguage": "pl-PL",
+				"mainEntity": [
+					{
+						"@type": "Question",
+						"name": "Jak wygląda współpraca?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Zaczynamy od darmowej konsultacji, na której rozmawiamy o tym, z czym potrzebujecie pomocy i co chcecie osiągnąć. Na tej podstawie proponuję najbardziej sensowny kierunek współpracy: czy to pakiet usług, czy pojedyncze usługi, czy może stałe wsparcie doradcze."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Jak długo trwa współpraca?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Zależy od tego, co wybierzecie. Pakiety usług zwykle realizuję w ciągu 1–4 tygodni, ale to też zależy od Waszej dostępności i tempa pracy. Stałe wsparcie doradcze to oczywiście dłuższa współpraca, ale też bardziej elastyczna."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Czy mogę zgłosić się tylko po jedną usługę?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Tak. Możemy zacząć od konsultacji, audytu, EPK albo strony."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Czy pracujesz tylko z zespołami folkowymi?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Nie. Pracuję z solistami, zespołami i grupami z różnych gatunków muzycznych. Najważniejsze jest to, czy chcesz świadomie pracować nad marką, komunikacją i rozwojem."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Czy robisz samo wykonanie strony?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Tak, ale zależy mi, żeby strona była częścią sensownego systemu, a nie tylko estetycznym dodatkiem."
+						}
+					}
+				]
+			}
+		]
+	}
+	</script>
+</head>
+
+<body>
+	<a class="skip-link" href="#main">Przejdź do treści</a>
+
+	<nav class="navbar navbar-expand-lg fixed-top" id="navBar">
+		<div class="container">
+			<a class="navbar-brand" href="#page-home">KAROL<br />KONOP</a>
+			<button class="navbar-toggler" type="button" data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Rozwiń nawigację">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+					<li class="nav-item"><a class="nav-link" href="#page-whatido">[czym się zajmuję]</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-whoisitfor">[z kim pracuję]</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-offer">[oferta]</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-about">[o mnie]</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-faq">[faq]</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-contact">[kontakt]</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main id="main">
+
+		<!-- page-home -->
+		<section class="page" id="page-home">
+			<div class="container">
+				<p class="greeting">Cześć!</p>
+				<hr />
+				<h1 class="display-3">
+					Nazywam się Karol i pomagam artystom zamienić wizję w skuteczny plan działania.
+				</h1>
+				<div class="hero-actions">
+					<a href="#page-consultation" class="btn btn-primary btn-lg">Umów darmową konsultację</a>
+					<a href="#page-offer" class="btn btn-outline-light btn-lg">Zobacz ofertę</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- page-whatido -->
+		<section class="page" id="page-whatido">
+			<div class="container">
+				<h2 class="display-2">Czym się zajmuję</h2>
+				<hr />
+				<p class="statement">
+					Większość artystów nie ma problemu z brakiem pomysłów.
+					<span class="hl">Ma problem z nadmiarem rzeczy robionych bez określonego kierunku i planu.</span>
+				</p>
+
+				<div class="panel">
+					<p class="lead fw-bold">
+						Dobry materiał, aktywne socjale, kilka zleceń i sporo pracy często nie wystarczają, jeśli
+						brakuje:
+					</p>
+					<ul>
+						<li>spójnego wizerunku</li>
+						<li>jasnej komunikacji</li>
+						<li>dobrych materiałów dla mediów i partnerów</li>
+						<li>strony lub systemu online, który porządkuje uwagę odbiorców</li>
+						<li>planu, co robić i w jakiej kolejności</li>
+					</ul>
+					<p class="lead">
+						<strong>Właśnie tym się zajmuję.</strong><br />
+						Pomagam przejść od chaosu do spójnego systemu działania — takiego, który lepiej pokazuje Twój
+						potencjał i ułatwia rozwój.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- page-whoisitfor -->
+		<section class="page" id="page-whoisitfor">
+			<div class="container">
+				<h2 class="display-2">Z kim pracuję</h2>
+				<hr />
+				<p class="lead">
+					Pracuję zarówno z twórcami indywidualnymi, jak i zespołami, które mają już swój materiał, koncerty
+					albo publiczność, ale też takimi, które dopiero planują wydanie pierwszego singla i chcą wejść na
+					rynek w pełni przygotowane do działania.
+				</p>
+				<p>
+					Prowadzę konsultacje z regularnie koncertującymi zespołami, które czują, że ich komunikacja jest
+					niespójna albo chaotyczna. <span class="hl">Które chcą wejść poziom wyżej swoim nakładem pracy, bez
+						kontraktowania stałego menedżera</span>, i które potrzebują pomocy w zbudowaniu strategii oraz
+					praktycznego wdrożenia planu w życie zespołu.
+				</p>
+
+				<p><strong>Ta współpraca będzie dla Was szczególnie dobra, jeśli:</strong></p>
+				<ul>
+					<li>nie wiecie, jak mówić o swoim zespole lub o sobie jako artystach</li>
+					<li>macie poczucie chaosu w komunikacji</li>
+					<li>macie dobrą muzykę, ale słabo to widać na zewnątrz</li>
+					<li>potrzebujecie strony, Electronic Press Kitu albo materiałów do bookingu</li>
+					<li>chcecie lepiej zaplanować premierę singla, EP albo trasy</li>
+					<li>szukacie kogoś, kto pomoże Wam uporządkować kierunek Waszych działań</li>
+				</ul>
+			</div>
+			<div class="bg-stripe" id="bg-stripe-1" role="presentation"></div>
+		</section>
+
+		<!-- page-howcanihelp -->
+		<section class="page" id="page-howcanihelp">
+			<div class="container">
+				<h2 class="display-2">Z czym pomagam</h2>
+				<hr />
+
+				<div class="pillar">
+					<h3>1. Strategia</h3>
+					<p>
+						Porządkuję kierunek działania zespołu: cele, odbiorców, priorytety, komunikację i plan ruchów na
+						najbliższe miesiące.
+					</p>
+				</div>
+				<div class="pillar">
+					<h3>2. Wizerunek</h3>
+					<p>
+						Pomagam nazwać i opisać to, co w zespole najcenniejsze — tak, żeby było czytelne dla fanów,
+						mediów i organizatorów.
+					</p>
+				</div>
+				<div class="pillar">
+					<h3>3. Narzędzia</h3>
+					<p>
+						Tworzę strony internetowe, EPK, systemy linków i podstawowe rozwiązania, które porządkują Waszą
+						obecność online.
+					</p>
+				</div>
+				<div class="pillar">
+					<h3>4. Wsparcie</h3>
+					<p>
+						Doradzam przed premierami, koncertami i ważnymi decyzjami, żeby zespół nie wracał do chaosu po
+						pierwszym wdrożeniu.
+					</p>
+				</div>
+			</div>
+			<div class="bg-stripe" id="bg-stripe-2" role="presentation"></div>
+		</section>
+
+		<!-- page-offer -->
+		<section class="page" id="page-offer">
+			<div class="container">
+				<h2 class="display-2">Oferta</h2>
+				<hr />
+				<p class="lead">
+					Każda współpraca zaczyna się od bezpłatnej konsultacji, na której ustalamy, w jakich kwestiach
+					potrzebujecie pomocy.
+				</p>
+				<p>
+					Poniżej znajdziesz przykładowe pakiety usług, które często wybierają zespoły, ale to tylko
+					przykłady — każdy z nich można dowolnie modyfikować, łączyć albo zamawiać pojedyncze usługi. Jeśli
+					masz pytania, pisz śmiało!
+				</p>
+
+				<div class="row g-4 mt-4">
+
+					<div class="col-12 col-lg-6">
+						<div class="card h-100 is-featured">
+							<div class="card-header">
+								<span class="card-badge">Zacznij tutaj</span>
+								<h3 class="card-title">Konsultacja menedżerska</h3>
+							</div>
+							<div class="card-body d-flex flex-column">
+								<p>
+									Rozmowa online, telefoniczna lub osobista, na której skupiamy się na Waszych
+									aktualnych potrzebach i celach. Każda rozmowa jest inna, ale zwykle jest to
+									połączenie diagnozy, burzy mózgów i wskazówek, po której otrzymujecie jasne
+									kierunki działania.
+								</p>
+								<p><strong>Dla kogo:</strong> dla tych z Was, którzy potrzebują szybkiego wsparcia,
+									jasności i konkretów do wdrożenia, ale nie są jeszcze gotowi na dłuższą współpracę
+									albo chcą ją przetestować.</p>
+								<p><strong>Co zawiera:</strong></p>
+								<ul>
+									<li>spotkanie 30–90 min (w zależności od potrzeby)</li>
+									<li>podsumowanie z wnioskami i punktami działania w formie pisemnej</li>
+								</ul>
+								<a href="#page-consultation" class="btn btn-primary mt-auto align-self-start">Umów
+									spotkanie</a>
+							</div>
+							<div class="card-footer">300 zł netto</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-6">
+						<div class="card h-100">
+							<div class="card-header">
+								<h3 class="card-title">Audyt i kierunek</h3>
+							</div>
+							<div class="card-body d-flex flex-column">
+								<p>
+									Analiza marki, komunikacji, obecności online, materiałów i sposobu działania
+									zespołu. Dostajecie jasną diagnozę i plan, co poprawić najpierw.
+								</p>
+								<p><strong>Dla kogo:</strong> dla zespołów, które potrzebują spojrzenia z zewnątrz i
+									dobrego punktu startu.</p>
+								<p><strong>Co zawiera:</strong></p>
+								<ul>
+									<li>analiza marki i komunikacji</li>
+									<li>analiza strony, EPK, linków i social mediów</li>
+									<li>konsultacja</li>
+									<li>roadmapa działań na 30 dni</li>
+								</ul>
+								<a href="#page-consultation" class="btn btn-primary mt-auto align-self-start">Umów
+									spotkanie</a>
+							</div>
+							<div class="card-footer">od 1 500 zł netto</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-6">
+						<div class="card h-100">
+							<div class="card-header">
+								<h3 class="card-title">Strategia singla, EP lub trasy</h3>
+							</div>
+							<div class="card-body d-flex flex-column">
+								<p>
+									Tworzę plan promocji oparty nie tylko na kalendarzu postów, ale na sensie premiery:
+									historii, komunikatach, materiałach, kanałach i CTA.
+								</p>
+								<p><strong>Dla kogo:</strong> dla zespołów, które chcą lepiej wykorzystać uwagę wokół
+									premiery albo koncertów.</p>
+								<p><strong>Co zawiera:</strong></p>
+								<ul>
+									<li>strategia premiery</li>
+									<li>harmonogram działań</li>
+									<li>plan treści</li>
+									<li>lista materiałów</li>
+									<li>rekomendacje kanałów</li>
+									<li>omówienie wdrożenia</li>
+								</ul>
+								<a href="#page-consultation" class="btn btn-primary mt-auto align-self-start">Umów
+									spotkanie</a>
+							</div>
+							<div class="card-footer">od 2 500 zł netto</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-6">
+						<div class="card h-100">
+							<div class="card-header">
+								<h3 class="card-title">EPK i materiały bookingowe</h3>
+							</div>
+							<div class="card-body d-flex flex-column">
+								<p>
+									Porządkuję i tworzę materiały, które pomagają rozmawiać z mediami, klubami,
+									festiwalami i partnerami. To nie tylko strona, ale system, który pokazuje potencjał
+									zespołu i ułatwia kontakt z nim.
+								</p>
+								<p><strong>Dla kogo:</strong> dla zespołów, które chcą wyglądać profesjonalnie i nie
+									improwizować przy każdym kontakcie branżowym.</p>
+								<p><strong>Co zawiera:</strong></p>
+								<ul>
+									<li>Press Kit w wersji online oraz pliki do druku</li>
+									<li>bio short / medium / long</li>
+									<li>opis koncertowy</li>
+									<li>one-sheet</li>
+									<li>materiały do bookingu</li>
+									<li>szablony komunikacji do mediów i organizatorów</li>
+								</ul>
+								<a href="#page-consultation" class="btn btn-primary mt-auto align-self-start">Umów
+									spotkanie</a>
+							</div>
+							<div class="card-footer">od 2 500 zł netto</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-6">
+						<div class="card h-100">
+							<div class="card-header">
+								<h3 class="card-title">Strona internetowa</h3>
+							</div>
+							<div class="card-body d-flex flex-column">
+								<p>
+									Projektuję i wdrażam strony, które nie są tylko wizytówką, ale realnym zapleczem
+									komunikacji: z muzyką, koncertami, bio, mediami, kontaktem i zapisami.
+								</p>
+								<p><strong>Dla kogo:</strong> dla zespołów, które chcą mieć jedno porządne miejsce
+									online.</p>
+								<p><strong>Co zawiera:</strong></p>
+								<ul>
+									<li>struktura strony</li>
+									<li>copy</li>
+									<li>wdrożenie</li>
+									<li>porządek w linkach i CTA</li>
+									<li>kontakt / newsletter</li>
+									<li>sekcje muzyka, koncerty, media</li>
+									<li>SEO</li>
+									<li>pomoc przy wykupieniu domeny i hostingu</li>
+								</ul>
+								<a href="#page-consultation" class="btn btn-primary mt-auto align-self-start">Umów
+									spotkanie</a>
+							</div>
+							<div class="card-footer">od 5 000 zł netto</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-6">
+						<div class="card h-100">
+							<div class="card-header">
+								<h3 class="card-title">Stałe wsparcie doradcze</h3>
+							</div>
+							<div class="card-body d-flex flex-column">
+								<p>
+									Regularne konsultacje, feedback do działań, korekty kierunku i wsparcie przy
+									decyzjach strategicznych. To opcja dla zespołów, które chcą mieć stałego partnera
+									do rozmowy o rozwoju i nie wracać do chaosu po pierwszym wdrożeniu.
+								</p>
+								<p><strong>Dla kogo:</strong> dla zespołów, które chcą działać bardziej świadomie i
+									mieć partnera do myślenia.</p>
+								<p><strong>Co zawiera:</strong></p>
+								<ul>
+									<li>2 spotkania miesięcznie</li>
+									<li>bieżące konsultacje</li>
+									<li>feedback do komunikacji</li>
+									<li>wsparcie przy premierach i bookingu</li>
+									<li>korekty planu działań</li>
+								</ul>
+								<a href="#page-consultation" class="btn btn-primary mt-auto align-self-start">Umów
+									spotkanie</a>
+							</div>
+							<div class="card-footer">od 1 200 zł netto / miesiąc</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- page-about -->
+		<section class="page" id="page-about">
+			<div class="container">
+				<h2 class="display-2">O mnie</h2>
+				<hr />
+				<img src="img/karolkonop_portret.webp" class="portrait" width="640" height="738" loading="lazy"
+					alt="Portret Karola Konopa">
+				<p>
+					Nazywam się Karol Konop. Jestem inżynierem informatykiem oraz menedżerem artystycznym i od ponad 10
+					lat zawodowo zajmuję się zarządzaniem zespołami i projektami. Zarówno tymi muzycznymi, jak i
+					inżynierskimi. Jestem menedżerem zespołu CHRUST — zespołu, który zdobył O!Lśnienie 2026 w kategorii
+					Muzyka popularna za album „Przed Zmierzchem”, został nominowany do Fryderyka 2026 w kategorii Album
+					Roku Muzyka Korzeni za ten sam album i był finalistą polskich kwalifikacji do Eurowizji 2025.
+				</p>
+				<p>
+					To połączenie nie jest przypadkowe.<br />
+					W pracy z zespołami łączę świat muzyki, strategii, technologii i pracy z ludźmi. Rozumiem zarówno
+					to, jak budować markę i komunikację, jak i to, jak działa zespół od środka: napięcia, decyzje, role,
+					brak czasu, przeciążenie i momenty, w których potrzebna jest nie tylko kreatywność, ale też
+					struktura.
+				</p>
+			</div>
+		</section>
+
+		<!-- page-faq -->
+		<section class="page" id="page-faq">
+			<div class="container">
+				<h2 class="display-2">FAQ</h2>
+				<hr />
+
+				<div class="faq-item">
+					<h3><span class="hl">Jak wygląda współpraca?</span></h3>
+					<p>
+						Zaczynamy od darmowej konsultacji, na której rozmawiamy o tym, z czym potrzebujecie pomocy i co
+						chcecie osiągnąć. Na tej podstawie proponuję najbardziej sensowny kierunek współpracy: czy to
+						pakiet usług, czy pojedyncze usługi, czy może stałe wsparcie doradcze.
+					</p>
+				</div>
+				<div class="faq-item">
+					<h3><span class="hl">Jak długo trwa współpraca?</span></h3>
+					<p>
+						Zależy od tego, co wybierzecie. Pakiety usług zwykle realizuję w ciągu 1–4 tygodni, ale to też
+						zależy od Waszej dostępności i tempa pracy. Stałe wsparcie doradcze to oczywiście dłuższa
+						współpraca, ale też bardziej elastyczna.
+					</p>
+				</div>
+				<div class="faq-item">
+					<h3><span class="hl">Czy mogę zgłosić się tylko po jedną usługę?</span></h3>
+					<p>Tak. Możemy zacząć od konsultacji, audytu, EPK albo strony.</p>
+				</div>
+				<div class="faq-item">
+					<h3><span class="hl">Czy pracujesz tylko z zespołami folkowymi?</span></h3>
+					<p>
+						Nie. Pracuję z solistami, zespołami i grupami z różnych gatunków muzycznych. Najważniejsze jest
+						to, czy chcesz świadomie pracować nad marką, komunikacją i rozwojem.
+					</p>
+				</div>
+				<div class="faq-item">
+					<h3><span class="hl">Czy robisz samo wykonanie strony?</span></h3>
+					<p>
+						Tak, ale zależy mi, żeby strona była częścią sensownego systemu, a nie tylko estetycznym
+						dodatkiem.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- page-contact -->
+		<section class="page" id="page-contact">
+			<div class="container">
+				<h2 class="display-2">Kontakt</h2>
+				<hr />
+				<p class="lead">
+					Tworzysz muzykę i chcesz poukładać swoją markę, komunikację albo premierę?<br />
+					Napisz do mnie i podeślij:
+				</p>
+				<ul>
+					<li>linki do profili społecznościowych i streamingów (jeżeli posiadasz)</li>
+					<li>stronę lub materiały (jeśli masz)</li>
+					<li>kilka zdań o tym, na jakim etapie jesteś</li>
+					<li>informację, z czym najbardziej potrzebujesz pomocy</li>
+				</ul>
+				<p>
+					Na tej podstawie zaproponuję najbardziej sensowny kierunek współpracy. Napisz do mnie korzystając z
+					poniższego formularza lub <a href="#page-consultation">umów darmową konsultację on-line</a>.
+				</p>
+
+				<form class="row g-3 my-5" id="contact-form" novalidate>
+					<div class="col-md-6">
+						<label class="form-label visually-hidden" for="inputEmail">Twój e-mail</label>
+						<input type="email" class="form-control" id="inputEmail" name="email" placeholder="email"
+							autocomplete="email" maxlength="254" required>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label visually-hidden" for="inputName">Twoje imię</label>
+						<input type="text" class="form-control" id="inputName" name="name" placeholder="twoje imię"
+							autocomplete="name" maxlength="100" required>
+					</div>
+					<div class="col-12">
+						<label class="form-label visually-hidden" for="inputTextarea">Wiadomość</label>
+						<textarea class="form-control" id="inputTextarea" name="message" rows="6" maxlength="5000"
+							placeholder="napisz, z czym potrzebujesz pomocy" required></textarea>
+					</div>
+
+					<!-- Honeypot: puste dla ludzi, wypełniane przez boty. Nie usuwać. -->
+					<div class="hp-field" aria-hidden="true">
+						<label for="inputWebsite">Nie wypełniaj tego pola</label>
+						<input type="text" id="inputWebsite" name="website" tabindex="-1" autocomplete="off">
+					</div>
+
+					<div class="col-12 d-flex flex-wrap align-items-center justify-content-between gap-3">
+						<p class="form-status m-0" id="form-status" role="status" aria-live="polite"></p>
+						<button type="submit" class="btn btn-primary" id="form-submit">Wyślij wiadomość</button>
+					</div>
+				</form>
+
+				<noscript>
+					<p><strong>Formularz wymaga JavaScriptu.</strong> Napisz bezpośrednio na
+						<a href="mailto:karol.konop@gmail.com">karol.konop@gmail.com</a>.
+					</p>
+				</noscript>
+
+				<img src="img/karolkonop_photo_13.webp" class="img-fluid mt-4" width="1200" height="795" loading="lazy"
+					alt="Karol Konop podczas pracy z zespołem">
+			</div>
+		</section>
+
+		<!-- page-consultation -->
+		<section class="page" id="page-consultation">
+			<div class="container">
+				<h2 class="display-2">Umów <span class="hl">darmową</span> konsultację on-line</h2>
+				<hr />
+				<iframe
+					src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2XMiRJ2DXWLG8mveexR_ie-SBksJfxhZCzWtTFlY0BrVUuK4CWsKWRwLOLTiSeVoWYRRLnQ0H3?gv=true"
+					width="100%" height="600" loading="lazy" title="Kalendarz — umów konsultację"></iframe>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="container" id="footer">
+		<div class="row py-5">
+			<div class="col-md-5 mb-4">
+				<h3>Newsletter</h3>
+				<iframe
+					src="https://bandsintown.com/artist/15542927/email_signup_form?headerTextColor=rgba(20,17,15,1)&backgroundColor=rgba(247,247,247,1)&ctaBackgroundColor=rgba(20,17,15,1)&title=newsletter&headerTextStyle=normal&headerText=&font=helvetica&ctaIcon=show&ctaBorderRadius=0px&ctaBorderWidth=2px&ctaBorderColor=rgba(20,17,15,1)&ctaFontColor=rgba(247,247,247,1)&alignment=left&emailInputField=show&ctaLabel=zapisz się&layout=wide&locale=pl"
+					width="100%" height="220" loading="lazy" title="Zapisz się do newslettera"></iframe>
+			</div>
+			<div class="col-6 col-md-3 mb-4">
+				<h3>Social media</h3>
+				<ul class="nav flex-column">
+					<li class="nav-item"><a class="nav-link" target="_blank" rel="noopener noreferrer"
+							href="https://www.facebook.com/karol.z.chrustu">facebook</a></li>
+					<li class="nav-item"><a class="nav-link" target="_blank" rel="noopener noreferrer"
+							href="https://www.instagram.com/karol_z_chrustu/">instagram</a></li>
+					<li class="nav-item"><a class="nav-link" target="_blank" rel="noopener noreferrer"
+							href="https://www.tiktok.com/@karol.z.chrustu">tiktok</a></li>
+					<li class="nav-item"><a class="nav-link" target="_blank" rel="noopener noreferrer"
+							href="https://www.youtube.com/@karol_z_chrustu">youtube</a></li>
+				</ul>
+			</div>
+			<div class="col-6 col-md-3 mb-4">
+				<h3>Menu</h3>
+				<ul class="nav flex-column">
+					<li class="nav-item"><a class="nav-link" href="#page-whatido">czym się zajmuję</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-whoisitfor">z kim pracuję</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-offer">oferta</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-about">o mnie</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-faq">faq</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-contact">kontakt</a></li>
+					<li class="nav-item"><a class="nav-link" href="#page-consultation">konsultacje</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="d-flex flex-column flex-sm-row justify-content-between py-4 border-top">
+			<p class="m-0">© 2026 Karol Konop. Wszystkie prawa zastrzeżone.</p>
+			<p class="m-0"><a href="mailto:karol.konop@gmail.com">karol.konop@gmail.com</a></p>
+		</div>
+	</footer>
+</body>
+
+</html>

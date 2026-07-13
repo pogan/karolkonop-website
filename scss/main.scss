@@ -1,230 +1,488 @@
-// Variable overrides first
-$primary: #f7f7f7;
-$enable-shadows: true;
+// ---------------------------------------------------------------------------
+// karol.konop.pl
+//
+// Design language: condensed display type over monospace body copy, hard edges,
+// ink-on-paper with a single peach accent. Photography sits behind text, always
+// under a scrim so the copy stays legible.
+//
+// Bootstrap is imported piecemeal — only the parts the page actually uses.
+// Compile with `npm run build:css` (writes public/css/main.css).
+// ---------------------------------------------------------------------------
+
+@import "../node_modules/bootstrap/scss/functions";
+
+// --- Tokens ----------------------------------------------------------------
+
+$ink: #14110f;
+$paper: #f7f7f7;
+$accent: #ffdcbb;
+
+$sofia-font: "Sofia Sans Condensed", "Arial Narrow", sans-serif;
+$spline-font: "Spline Sans Mono", ui-monospace, monospace;
+
+// Vertical rhythm: one value drives the gap between every section.
+$section-space: 6rem;
+$section-space-sm: 3.5rem;
+
+// The fixed navbar's height. Anchor targets offset by this so headings never
+// land underneath it.
+$navbar-height: 5rem;
+
+// --- Bootstrap overrides ---------------------------------------------------
+
+// $primary used to be near-white, which made .btn-primary invisible and forced
+// every CTA to improvise (btn-dark here, btn-success there). Binding it to ink
+// makes .btn-primary the one and only call to action.
+$primary: $ink;
+$secondary: $accent;
+$light: $paper;
+$dark: $ink;
+
+$theme-colors: (
+	"primary": $primary,
+	"secondary": $secondary,
+	"light": $light,
+	"dark": $dark,
+);
+
+$body-bg: $paper;
+$body-color: $ink;
+
 $enable-rounded: false;
+$enable-shadows: false;
 $enable-dark-mode: false;
 
-@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap&family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap');
-
-$sofia-font: 'Sofia Sans Condensed', sans-serif;
-$montserrat-font: 'Montserrat', sans-serif;
-$spline-font: 'Spline Sans Mono', monospace;
 $font-family-base: $spline-font;
+$font-family-code: $spline-font;
+$font-size-base: 1rem;
+$line-height-base: 1.7;
 
+$headings-font-family: $sofia-font;
+$headings-font-weight: 600;
+$headings-line-height: 1;
 
-// import html5 boilerplate css
-@import "../css/html5_style.css";
-// Then import Bootstrap
-@import "../node_modules/bootstrap/scss/bootstrap";
+// Bootstrap's defaults top out at 5rem, which is why body copy tagged with
+// display-* was rendering at headline size. This scale is tuned for a page
+// where display-* appears on headings only.
+$display-font-sizes: (
+	1: 4.5rem,
+	2: 3rem,
+	3: 2.25rem,
+	4: 2rem,
+	5: 1.75rem,
+	6: 1.5rem,
+);
+$display-font-weight: 600;
 
+$lead-font-size: 1.2rem;
+$lead-font-weight: 400;
 
-.display-1,
-.display-2,
-.display-3,
-.display-4,
-.display-5,
-.display-6,
-.display-7 {
-	font-family: $sofia-font;
+$border-color: $ink;
+$card-border-color: $ink;
+$card-bg: #fff;
+$card-border-width: 2px;
+
+$input-border-color: $ink;
+$input-bg: #fff;
+$input-focus-border-color: $ink;
+$input-focus-box-shadow: 0 0 0 3px rgba($accent, 0.9);
+
+$btn-focus-box-shadow: 0 0 0 3px rgba($accent, 0.9);
+$btn-font-family: $sofia-font;
+$btn-font-weight: 600;
+
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/utilities";
+
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/transitions"; // .collapse / .collapsing
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/card";
+@import "../node_modules/bootstrap/scss/helpers";
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+// --- Base ------------------------------------------------------------------
+
+html {
+	scroll-behavior: smooth;
 }
 
-.navbar {
-	text-shadow: none !important;
-	opacity: 1 !important;
-	transition: top 2s ease-out, opacity 2s ease-out;
-	background-color: #fff;
-
-	.nav-link {
-		font-weight: lighter;
-		text-align: center;
-		border-bottom: 1px solid rgba(0, 0, 0, 0);
-
-		&:hover {
-			border-bottom: 1px solid rgba(0, 0, 0, 0.5) !important;
-			transition: border-bottom 0.3s ease-out;
-		}
-
-		&.active {
-			border-bottom: 1px solid #fff;
-		}
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
 	}
+}
+
+body {
+	// Belt-and-braces against horizontal scroll; the real fix is that no element
+	// uses 100vw any more.
+	overflow-x: hidden;
+}
+
+h1,
+h2 {
+	text-transform: uppercase;
+	letter-spacing: -0.01em;
+}
+
+// Body copy is capped for readability. Without this, monospace text runs to the
+// full container width and becomes hard to track line to line.
+p,
+li {
+	max-width: 68ch;
+}
+
+.lead {
+	max-width: 60ch;
+}
+
+// The peach rule under each section heading.
+hr {
+	width: 8rem;
+	height: 10px;
+	border: 0;
+	margin: 1.25rem 0 2rem;
+	background-color: $accent;
+	opacity: 1;
+}
+
+// Ink highlight. box-decoration-break makes the black box wrap correctly across
+// line breaks — without it, multi-line highlights lose their padding and the
+// box looks torn.
+.hl {
+	background-color: $ink;
+	color: $paper;
+	padding: 0.1em 0.3em;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+}
+
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	z-index: $zindex-fixed + 1;
+
+	&:focus {
+		left: 1rem;
+		top: 1rem;
+		padding: 0.75rem 1rem;
+		background-color: $ink;
+		color: $paper;
+	}
+}
+
+// --- Buttons ---------------------------------------------------------------
+
+.btn {
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	padding: 0.7rem 1.5rem;
+	border-width: 2px;
+	transition: background-color 0.2s ease-out, color 0.2s ease-out;
+}
+
+.btn-primary {
+	--#{$prefix}btn-hover-bg: #{$accent};
+	--#{$prefix}btn-hover-border-color: #{$ink};
+	--#{$prefix}btn-hover-color: #{$ink};
+	--#{$prefix}btn-active-bg: #{$accent};
+	--#{$prefix}btn-active-border-color: #{$ink};
+	--#{$prefix}btn-active-color: #{$ink};
+}
+
+.btn-outline-primary {
+	--#{$prefix}btn-hover-bg: #{$accent};
+	--#{$prefix}btn-hover-border-color: #{$ink};
+	--#{$prefix}btn-hover-color: #{$ink};
+}
+
+// --- Navbar ----------------------------------------------------------------
+
+.navbar {
+	min-height: $navbar-height;
+	background-color: rgba($paper, 0.95);
+	backdrop-filter: blur(6px);
+	border-bottom: 1px solid rgba($ink, 0.12);
 
 	.navbar-brand {
 		font-family: $sofia-font;
-		font-weight: bolder;
-		line-height: 0.8em;
+		font-weight: 700;
+		font-size: 1.6rem;
+		line-height: 0.85;
+		letter-spacing: -0.01em;
 	}
 
+	.nav-link {
+		font-weight: 400;
+		text-align: center;
+		border-bottom: 2px solid transparent;
+		transition: border-color 0.2s ease-out;
+
+		&:hover,
+		&:focus-visible {
+			border-bottom-color: $accent;
+		}
+
+		&.active {
+			border-bottom-color: $ink;
+		}
+	}
 }
 
-.newsletter-header {
-	font-family: $sofia-font !important;
-	font-size: 1.5em;
-	font-weight: 500;
-	text-transform: lowercase;
-}
+// --- Sections --------------------------------------------------------------
 
 .page {
-	// min-height: 100vh;
-	width: 100vw;
-	margin: 0;
-	padding: 80px 0 0 0;
-	display: flex;
-	align-items: start;
-	justify-content: center;
+	// Was `width: 100vw`, which includes the scrollbar and pushed every section
+	// wider than the viewport — the source of the horizontal scroll on mobile.
+	width: 100%;
+	padding-block: $section-space;
+	scroll-margin-top: $navbar-height;
+
+	@include media-breakpoint-down(md) {
+		padding-block: $section-space-sm;
+	}
+}
+
+// Photo sections: the image sits under a scrim so white text clears WCAG AA
+// instead of relying on a text-shadow.
+@mixin photo-backdrop($image, $scrim: 0.55) {
+	position: relative;
+	background-image: linear-gradient(rgba($ink, $scrim), rgba($ink, $scrim)), url($image);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	font-weight: 300;
-	font-size: 1rem;
-
-	h1 {
-		text-transform: uppercase;
-	}
-
-	h1,
-	h2 {
-		font-family: $sofia-font;
-		// text-shadow: 1px 1px 1px rgba(0, 0, 0, 1.0);
-	}
-
-}
-
-hr {
-	border-bottom: 10px solid #ffdcbb;
-	margin: 0 0 20px 0;
-	opacity: 1;
-	color: transparent;
+	color: $paper;
 }
 
 #page-home {
-	background-image: url('../img/karolkonop_photo_1.JPG');
-	background-size: 80vh;
-	margin-top: -50px;
+	display: flex;
+	align-items: center;
+	min-height: 100svh; // svh, so mobile browser chrome can't clip the hero
+	padding-top: $navbar-height + 2rem;
+	@include photo-backdrop("../img/karolkonop_photo_1.webp", 0.5);
 
-	.wrap {
-		display: block;
-		position: relative;
-		top: 25vh;
-
-
-		h1 {
-			font-weight: 500;
-			text-shadow: none;
-		}
-
-		h2 {
-			font-weight: 300;
-			color: #fff;
-			text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
-		}
-
+	// "Cześć!" is a greeting, not the page's subject, so it is no longer the h1 —
+	// the proposition below it is. It keeps the display-1 treatment regardless.
+	.greeting {
+		font-family: $sofia-font;
+		font-weight: 600;
+		line-height: 1;
+		text-transform: uppercase;
+		font-size: clamp(3.5rem, 12vw, 7rem);
+		max-width: none;
+		margin-bottom: 0;
 	}
-}
 
-@include media-breakpoint-down(sm) {
-  #homepage-links {
-    flex-direction: column;
-	align-items: center !important;
-	a{
-		margin: 10px 0;
+	h1 {
+		font-weight: 400;
+		text-transform: none;
+		letter-spacing: normal;
+		max-width: 22ch;
 	}
-  }
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 2.5rem;
+	}
 }
 
 #page-whatido {
-	align-items: center;
-	min-height: 100vh;
-
-	.container-fluid {
-		background-image: url(../img/karolkonop_photo_7_b.JPG);
-		background-size: cover;
-		background-position: bottom center;
-		padding: 40px;
-		color: #f7f7f7;
-		text-shadow: 1px 1px 0px #000;
+	.statement {
+		font-family: $sofia-font;
+		font-size: clamp(2rem, 5vw, 3.25rem);
+		line-height: 1.05;
+		text-transform: uppercase;
+		max-width: 20ch;
 	}
 
-}
+	.panel {
+		@include photo-backdrop("../img/karolkonop_photo_7_b.webp", 0.65);
+		padding: clamp(1.5rem, 5vw, 3rem);
+		margin-top: 3rem;
 
-ul {
-	font-size: 1.1em;
-
-	li {
-		margin: 10px 0;
-		line-height: 1.1em;
+		p,
+		li {
+			max-width: 60ch;
+		}
 	}
 }
 
-// p{
-// 	font-size: 1.1em;
-// 	line-height: 1.1em;
-// 	font-family: $sofia-font;
-// }
+#page-howcanihelp {
+	.pillar {
+		border-top: 2px solid $ink;
+		padding-top: 1.25rem;
+		margin-top: 2.5rem;
+
+		h3 {
+			display: inline-block;
+			@extend .hl;
+			margin-bottom: 0.75rem;
+		}
+	}
+}
 
 #page-offer {
 	.card {
-		border: 0;
-		margin: 10pt 0;
-		background-color: #fdfdfd;
+		background-color: #fff;
+
+		&.is-featured {
+			border-color: $ink;
+			box-shadow: 8px 8px 0 $accent;
+		}
+	}
+
+	.card-header {
+		background-color: transparent;
+		border-bottom: 2px solid $accent;
+		padding-block: 1.25rem;
 	}
 
 	.card-title {
 		font-family: $sofia-font;
-		font-size: 2rem;
-		font-weight: 500;
+		font-size: 1.75rem;
+		font-weight: 600;
 		text-transform: uppercase;
 		margin: 0;
 	}
 
-	.card-header {
-		border-bottom: 2px solid #ffdcbb;
+	.card-footer {
+		background-color: transparent;
+		border-top: 1px solid rgba($ink, 0.15);
+		font-family: $sofia-font;
+		font-size: 1.5rem;
+		font-weight: 600;
+	}
+
+	.card-badge {
+		display: inline-block;
+		background-color: $accent;
+		font-size: 0.75rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		padding: 0.2rem 0.5rem;
+		margin-bottom: 0.5rem;
 	}
 }
 
-#page-whoisitfor {
-	ul {
-		li {
-			@extend .display-6;
+// Decorative photo bands. Percentage positioning so the framing survives every
+// viewport width, rather than the old hardcoded `center 500px`.
+.bg-stripe {
+	width: 100%;
+	height: clamp(120px, 25vw, 280px);
+	margin-top: 3rem;
+	background-size: cover;
+	background-position: center 35%;
+	background-repeat: no-repeat;
+}
+
+#bg-stripe-1 {
+	background-image: url("../img/karolkonop_photo_5.webp");
+}
+
+#bg-stripe-2 {
+	background-image: url("../img/karolkonop_photo_11.webp");
+}
+
+#page-about {
+	.portrait {
+		width: 100%;
+		max-width: 320px;
+		height:auto;
+		margin-bottom: 1.5rem;
+
+		// Only float once there's room for text to sit beside it. On a phone the
+		// old float squeezed the copy into slivers.
+		@include media-breakpoint-up(md) {
+			float: left;
+			margin: 0 2rem 1rem 0;
 		}
 	}
 }
 
-#page-about {
-	img {
-		max-width: 100%;
+#page-faq {
+	.faq-item {
+		border-top: 1px solid rgba($ink, 0.15);
+		padding-top: 1.5rem;
+		margin-top: 1.5rem;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+		margin-bottom: 0.75rem;
 	}
 }
 
 #page-contact {
-	img {
-		max-width: 100%;
+	form {
+		border: 2px solid $ink;
+		padding: clamp(1.25rem, 4vw, 2rem);
+		background-color: #fff;
 	}
 
-	form{
-		background-color: aliceblue;
+	// The honeypot. Hidden from humans, present in the DOM for bots to fill in.
+	.hp-field {
+		position: absolute;
+		left: -9999px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+
+	.form-status {
+		font-weight: 500;
+
+		&[data-state="ok"] {
+			color: $success;
+		}
+
+		&[data-state="error"] {
+			color: $danger;
+		}
 	}
 }
+
+#page-consultation {
+	iframe {
+		border: 2px solid $ink;
+		background-color: #fff;
+	}
+}
+
+// --- Footer ----------------------------------------------------------------
 
 #footer {
-	border-top: 1px solid #333;
-	font-family: $sofia-font;
-	font-size: 1.2em;
+	border-top: 2px solid $ink;
+	margin-top: $section-space;
 
-	li:hover {
-		text-decoration: underline;
+	// h3, not h2 — footer navigation shouldn't rank alongside the real sections
+	// in the document outline.
+	h3 {
+		font-size: 1.1rem;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
 	}
-}
 
-#bg-stripe-1 {
-	background-image: url('../img/karolkonop_photo_5.JPG');
-	background-position: center 500px;
-	height: 100px;
-	margin-top: 20px;
-}
-#bg-stripe-2 {
-	background-image: url('../img/karolkonop_photo_11.JPG');
-	background-position: center 740px;
-	height: 400px;
-	margin-top: 20px;
+	.nav-link {
+		padding: 0.15rem 0;
+		color: rgba($ink, 0.7);
+
+		&:hover,
+		&:focus-visible {
+			color: $ink;
+			text-decoration: underline;
+		}
+	}
 }

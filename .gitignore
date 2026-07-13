@@ -1,0 +1,16 @@
+# Include your project-specific ignores in this file
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+# Useful .gitignore templates: https://github.com/github/gitignore
+node_modules
+dist
+.cache
+gfx
+.DS_Store
+
+# Secrets — never commit these
+.env
+config.js
+
+# Build outputs under public/ ARE committed, so a deploy is just a pull with no
+# build step on the server. Regenerate them with `npm run build`, never by hand.
+public/css/main.css.map

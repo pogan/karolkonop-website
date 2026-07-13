@@ -1,0 +1,80 @@
+# Reverse proxy for karol.konop.pl.
+#
+# The Express app (port 3003) serves the site and handles the contact form. It
+# deliberately does NOT do compression, TLS or long-lived cache headers — those
+# belong here, in front of it.
+#
+# The app sets `trust proxy = 1`, so it reads the visitor's real IP from
+# X-Forwarded-For. Without the proxy_set_header lines below, the rate limiter on
+# /send-email would see every visitor as the same client.
+
+server {
+    listen 80;
+    server_name karol.konop.pl www.karol.konop.pl;
+    return 301 https://karol.konop.pl$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name www.karol.konop.pl;
+    # ssl_certificate ...;
+    # ssl_certificate_key ...;
+    return 301 https://karol.konop.pl$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name karol.konop.pl;
+
+    # ssl_certificate     /etc/letsencrypt/live/karol.konop.pl/fullchain.pem;
+    # ssl_certificate_key /etc/letsencrypt/live/karol.konop.pl/privkey.pem;
+
+    # HSTS lives here, not in the app (helmet's is disabled on purpose).
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+    # --- Compression -------------------------------------------------------
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 256;
+    gzip_proxied any;
+    gzip_types
+        text/plain
+        text/css
+        text/xml
+        application/javascript
+        application/json
+        application/manifest+json
+        application/xml
+        image/svg+xml;
+
+    # If ngx_brotli is available, prefer it:
+    # brotli on;
+    # brotli_comp_level 5;
+    # brotli_types text/plain text/css application/javascript application/json image/svg+xml;
+
+    # WebP, JPEG, PNG and .ico are already compressed — do not gzip them.
+
+    client_max_body_size 64k;
+
+    location / {
+        proxy_pass http://127.0.0.1:3003;
+        proxy_http_version 1.1;
+
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # --- Static cache headers ----------------------------------------------
+    # Filenames are not content-hashed, so a long max-age would strand visitors
+    # on a stale main.css after a deploy. 7 days with revalidation is the safe
+    # middle ground; raise it if you start hashing asset filenames.
+    location ~* \.(?:css|js|webp|jpg|jpeg|png|svg|ico|woff2)$ {
+        proxy_pass http://127.0.0.1:3003;
+        proxy_set_header Host $host;
+
+        expires 7d;
+        add_header Cache-Control "public, must-revalidate";
+    }
+}

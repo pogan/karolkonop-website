@@ -1,6 +1,6 @@
 {
-  "name": "karolkonop-webiste",
-  "version": "0.0.1",
+  "name": "karolkonop-website",
+  "version": "0.1.0",
   "private": true,
   "description": "karol.konop.pl website",
   "keywords": [],
@@ -9,12 +9,22 @@
   "type": "commonjs",
   "main": "karolkonop-website-express-app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node karolkonop-website-express-app.js"
+    "start": "node --env-file=.env karolkonop-website-express-app.js",
+    "build:css": "sass scss/main.scss public/css/main.css --style=compressed --no-source-map --quiet-deps --silence-deprecation=import,color-functions,global-builtin,if-function",
+    "watch:css": "sass --watch scss/main.scss public/css/main.css --style=expanded --quiet-deps --silence-deprecation=import,color-functions,global-builtin,if-function",
+    "build:img": "node scripts/optimize-images.js",
+    "build": "npm run build:css && npm run build:img"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
     "express": "^5.2.1",
-    "nodemailer": "^8.0.7"
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "nodemailer": "^9.0.3"
+  },
+  "devDependencies": {
+    "png-to-ico": "^3.0.2",
+    "sass": "^1.94.1",
+    "sharp": "^0.35.3"
   }
 }
