@@ -14,3 +14,4 @@ config.js
 # Build outputs under public/ ARE committed, so a deploy is just a pull with no
 # build step on the server. Regenerate them with `npm run build`, never by hand.
 public/css/main.css.map
+logs/
