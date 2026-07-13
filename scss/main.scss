@@ -259,7 +259,7 @@ hr {
 @mixin photo-backdrop($image, $scrim: 0.55) {
 	position: relative;
 	background-image: url($image);
-	background-size: 70%;
+	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	color: $paper;
