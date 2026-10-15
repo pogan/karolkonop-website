@@ -461,6 +461,30 @@ hr {
 	}
 }
 
+// --- Consent banner (built by public/js/analytics.js) ------------------------
+
+.consent-banner {
+	position: fixed;
+	inset: auto 0 0 0;
+	z-index: 1080;
+	padding: 1.25rem 0;
+	background-color: $paper;
+	border-top: 2px solid $ink;
+	font-size: 0.875rem;
+
+	&[hidden] {
+		display: none;
+	}
+
+	p {
+		max-width: none;
+	}
+
+	.btn {
+		white-space: nowrap;
+	}
+}
+
 // --- Footer ----------------------------------------------------------------
 
 #footer {

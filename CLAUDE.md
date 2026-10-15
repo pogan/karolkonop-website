@@ -53,7 +53,7 @@ Hardening that is easy to break without noticing:
 
 - **`app.set('trust proxy', 1)`** is required because nginx sits in front. Remove it and `express-rate-limit` sees the proxy's IP for every visitor and throttles the whole world as one client.
 - The **honeypot** is the `website` field in the contact form (hidden by `.hp-field` in SCSS). If it arrives non-empty the server returns 200 and silently drops the message — never signal rejection to a bot. Keep the field in the markup.
-- **helmet's CSP** allowlists exactly the third parties in use: Google Fonts (`style-src`/`font-src`), Google Calendar and Bandsintown (`frame-src`). `script-src` is `'self'`, so **no inline `<script>`** — client JS belongs in `public/js/app.js`. (The JSON-LD block is `application/ld+json`, not executable, so it's fine.)
+- **helmet's CSP** allowlists exactly the third parties in use: Google Fonts (`style-src`/`font-src`), Google Calendar and Bandsintown (`frame-src`), and GA4 (`googletagmanager.com` in `script-src`, the `google-analytics.com` hosts in `connect-src`/`img-src`). GA4 lives in `public/js/analytics.js` and loads gtag.js only after the visitor accepts the consent banner it builds — keep it that way. Apart from that, `script-src` is `'self'`, so **no inline `<script>`** — client JS belongs in `public/js/app.js`. (The JSON-LD block is `application/ld+json`, not executable, so it's fine.)
 - HSTS is deliberately off in helmet; nginx owns it. See `nginx.conf.example`, which also owns gzip and cache headers — don't add a `compression` middleware.
 
 ## Front-end

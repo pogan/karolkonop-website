@@ -26,12 +26,18 @@ app.use(
 		contentSecurityPolicy: {
 			directives: {
 				defaultSrc: ["'self'"],
-				scriptSrc: ["'self'"],
+				// GA4 (loaded only after consent, see public/js/analytics.js).
+				scriptSrc: ["'self'", 'https://www.googletagmanager.com'],
 				styleSrc: ["'self'", 'https://fonts.googleapis.com'],
 				fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-				imgSrc: ["'self'", 'data:'],
+				imgSrc: ["'self'", 'data:', 'https://*.google-analytics.com', 'https://*.googletagmanager.com'],
 				frameSrc: ['https://calendar.google.com', 'https://bandsintown.com', 'https://www.bandsintown.com'],
-				connectSrc: ["'self'"],
+				connectSrc: [
+					"'self'",
+					'https://*.google-analytics.com',
+					'https://*.analytics.google.com',
+					'https://*.googletagmanager.com',
+				],
 				objectSrc: ["'none'"],
 				baseUri: ["'self'"],
 				formAction: ["'self'"],
