@@ -13,6 +13,8 @@ if (missing.length) {
 }
 
 const PORT = process.env.PORT || 3003;
+// Domyślnie tylko localhost (ruch z zewnątrz przez nginx); w kontenerze podglądu HOST=0.0.0.0.
+const HOST = process.env.HOST || '127.0.0.1';
 const PUBLIC_DIR = path.join(__dirname, 'public');
 
 const app = express();
@@ -124,6 +126,6 @@ app.use((req, res) => {
 	res.status(404).sendFile(path.join(PUBLIC_DIR, '404.html'));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, HOST, () => {
 	console.log(`karolkonop-website-app listening on ${PORT}, serving ${PUBLIC_DIR}`);
 });
