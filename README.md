@@ -80,6 +80,14 @@ pm2 restart karolkonop-website --update-env
 
 No build step, no extra dependencies, on the server itself.
 
+### Release flow
+
+Changes never go straight to production:
+
+1. Work happens on a feature branch and lands on `staging` through a pull request. CI (`.github/workflows/ci.yml`) runs the `test` check (install, build, tests if any, a boot test on Node 24) and the PR merges itself once it is green.
+2. Every push to `staging` is deployed automatically to a password-protected preview at `karolkonop.staging.vamude.com`, so changes can be reviewed on a real server.
+3. A release is a pull request from `staging` to `main`. It needs the `test` and `only-staging` checks and an approval from the repository owner; only then can it be merged.
+
 ## License
 
 `LICENSE.txt` is the MIT license inherited from the HTML5 Boilerplate template this project started from. Site copy, photography and brand assets are not covered by it.
