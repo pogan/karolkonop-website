@@ -60,7 +60,9 @@ const transporter = nodemailer.createTransport({
 	name: 'Karol Konop Website Form',
 	host: process.env.SMTP_HOST,
 	port: Number(process.env.SMTP_PORT),
-	secure: true, // implicit TLS (port 465)
+	// Implicit TLS na porcie 465 (produkcja). Inny port, np. testowa skrzynka Mailpit na
+	// podglądzie (mailpit:1025), łączy się bez TLS.
+	secure: Number(process.env.SMTP_PORT) === 465,
 	auth: {
 		user: process.env.SMTP_USER,
 		pass: process.env.SMTP_PASS,
