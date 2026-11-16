@@ -6,7 +6,7 @@ It's a small project, but it's a complete one end to end — front end, backend,
 
 ## What the site is
 
-One HTML page (`public/index.html`), sectioned with anchor navigation: home, what I do, who I work with, how I can help, service packages with pricing, about, FAQ, contact form, and an embedded booking calendar for free consultations. The footer carries a newsletter signup (Bandsintown) and social links. Structured data (`schema.org` `Person`, `ProfessionalService`, `FAQPage`, `WebSite`) is embedded as JSON-LD for SEO and rich results — including a service catalog with real pricing, which is not something you see boilerplate about.
+One HTML page (`views/index.ejs`), sectioned with anchor navigation: home, what I do, who I work with, how I can help, service packages with pricing, about, FAQ, contact form, and an embedded booking calendar for free consultations. The footer carries a newsletter signup (Bandsintown) and social links. Structured data (`schema.org` `Person`, `ProfessionalService`, `FAQPage`, `WebSite`) is embedded as JSON-LD for SEO and rich results — including a service catalog with real pricing, which is not something you see boilerplate about.
 
 Copy and content are in Polish, the author's and the site's primary audience's language.
 
@@ -31,8 +31,10 @@ Copy and content are in Polish, the author's and the site's primary audience's l
 
 ```
 karolkonop-website-express-app.js   Express server + contact form endpoint
+views/
+  index.ejs                         The site (single page, anchor-linked sections; EJS only for footer year + version)
+  404.ejs                           Not-found page
 public/                             Web root — the only directory served over HTTP
-  index.html                        The site (single page, anchor-linked sections)
   css/main.css, img/, favicon*      Generated — do not hand-edit, see below
   js/app.js                         Hand-written front-end behaviour
 scss/main.scss                      Stylesheet source (compiles to public/css/main.css)

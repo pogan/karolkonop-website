@@ -13,18 +13,24 @@
     "build:css": "sass scss/main.scss public/css/main.css --style=compressed --no-source-map --quiet-deps --silence-deprecation=import,color-functions,global-builtin,if-function",
     "watch:css": "sass --watch scss/main.scss public/css/main.css --style=expanded --quiet-deps --silence-deprecation=import,color-functions,global-builtin,if-function",
     "build:img": "node scripts/optimize-images.js",
-    "build": "npm run build:css && npm run build:img"
+    "build": "npm run build:css && npm run build:img",
+    "test": "node --test test/*.test.js"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
+    "ejs": "^7.0.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
     "helmet": "^8.1.0",
-    "nodemailer": "^9.0.3"
+    "nodemailer": "^9.0.3",
+    "vamude-kit": "https://github.com/pogan/vamude-kit/archive/refs/tags/v1.0.0.tar.gz"
   },
   "devDependencies": {
     "png-to-ico": "^3.0.2",
     "sass": "^1.94.1",
     "sharp": "^0.35.3"
+  },
+  "allowScripts": {
+    "better-sqlite3": true
   }
 }

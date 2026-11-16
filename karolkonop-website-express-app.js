@@ -3,6 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const nodemailer = require('nodemailer');
+const { readVersion, healthz, createStats } = require('vamude-kit');
 
 const REQUIRED_ENV = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS', 'MAIL_TO'];
 const missing = REQUIRED_ENV.filter((key) => !process.env[key]);
@@ -22,6 +23,17 @@ const app = express();
 // Behind nginx: trust the first proxy hop so req.ip is the visitor, not the proxy.
 // Without this the rate limiter would see one IP for every visitor.
 app.set('trust proxy', 1);
+
+// Pages are EJS templates in views/ (outside public/, see CLAUDE.md); the only
+// dynamic parts are the footer year and the app version.
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+const version = readVersion({ root: __dirname });
+app.locals.appVersion = version;
+
+// Visit statistics (vamude-kit): panel at /stats, password STATS_PASSWORD in .env.
+const stats = createStats({ file: process.env.STATS_DB || path.join(__dirname, 'data', 'stats.sqlite') });
 
 app.use(
 	helmet({
@@ -51,8 +63,16 @@ app.use(
 	})
 );
 
+app.get('/healthz', healthz({ version, checks: { stats: () => stats.db.prepare('SELECT 1').get() } }));
+app.use(stats.middleware);
+app.use(stats.panel);
+
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+
+app.get('/', (req, res) => res.render('index'));
+// Old URL from before the page became a template.
+app.get('/index.html', (req, res) => res.redirect(301, '/'));
 
 app.use(express.static(PUBLIC_DIR));
 
@@ -60,7 +80,9 @@ const transporter = nodemailer.createTransport({
 	name: 'Karol Konop Website Form',
 	host: process.env.SMTP_HOST,
 	port: Number(process.env.SMTP_PORT),
-	secure: true, // implicit TLS (port 465)
+	// Implicit TLS na porcie 465 (produkcja). Inny port, np. testowa skrzynka Mailpit na
+	// podglądzie (mailpit:1025), łączy się bez TLS.
+	secure: Number(process.env.SMTP_PORT) === 465,
 	auth: {
 		user: process.env.SMTP_USER,
 		pass: process.env.SMTP_PASS,
@@ -123,9 +145,13 @@ app.post('/send-email', contactLimiter, async (req, res) => {
 });
 
 app.use((req, res) => {
-	res.status(404).sendFile(path.join(PUBLIC_DIR, '404.html'));
+	res.status(404).render('404');
 });
 
-app.listen(PORT, HOST, () => {
-	console.log(`karolkonop-website-app listening on ${PORT}, serving ${PUBLIC_DIR}`);
-});
+module.exports = app;
+
+if (require.main === module) {
+	app.listen(PORT, HOST, () => {
+		console.log(`karolkonop-website ${version.label} listening on ${HOST}:${PORT}, serving ${PUBLIC_DIR}`);
+	});
+}

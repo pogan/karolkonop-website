@@ -17,7 +17,7 @@ npm run build        # build:css && build:img
 npm start            # node --env-file=.env, listens on :3003
 ```
 
-There are no tests. `npm start` fails fast if `.env` is missing or incomplete.
+`npm test` runs smoke tests (`node --test`). `npm start` fails fast if `.env` is missing or incomplete.
 
 ## Layout: public/ is the web root
 
@@ -25,7 +25,9 @@ There are no tests. `npm start` fails fast if `.env` is missing or incomplete.
 
 This matters: the server previously did `express.static(__dirname)`, which published the whole project directory, and `config.js` (SMTP credentials, gitignored but sitting next to `index.html`) was downloadable at `https://karol.konop.pl/config.js`. **Never mount a static root above `public/`, and never put a secret inside it.**
 
-- `public/` — `index.html`, `404.html`, `css/` (generated), `js/app.js`, `img/` (generated), icons, `robots.txt`, `sitemap.xml`, `site.webmanifest`
+- `views/` — `index.ejs` (the site) and `404.ejs`. EJS only for the footer year and the app version; rendered by the server, not served as files.
+- `public/` — `css/` (generated), `js/app.js`, `img/` (generated), icons, `robots.txt`, `sitemap.xml`, `site.webmanifest`
+- `data/` — visit statistics database (vamude-kit, gitignored).
 - `assets/` — original photography and `meta.png`. Sources only; `npm run build:img` re-encodes them into `public/`. Not served.
 - `scss/main.scss` — the only stylesheet source.
 - `scripts/optimize-images.js` — the image pipeline.
@@ -46,7 +48,8 @@ All secrets come from the environment; there is no config file. `npm start` load
 
 `karolkonop-website-express-app.js`:
 
-- serves `public/` statically, with a catch-all that returns `public/404.html`
+- renders `views/index.ejs` at `/` (`/index.html` → 301), serves `public/` statically, catch-all renders `views/404.ejs` with 404
+- vamude-kit: `/healthz` (status, version, commit), version in the footer, visit statistics in `data/stats.sqlite` with the panel at `/stats` (`STATS_PASSWORD` in `.env`; empty = panel off)
 - `POST /send-email` — validates the payload, checks a honeypot field, rate-limits to 5/hour per IP, then relays via nodemailer
 
 Hardening that is easy to break without noticing:
