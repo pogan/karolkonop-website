@@ -15,3 +15,6 @@ config.js
 # build step on the server. Regenerate them with `npm run build`, never by hand.
 public/css/main.css.map
 logs/
+
+# Visit statistics database (vamude-kit)
+data/
