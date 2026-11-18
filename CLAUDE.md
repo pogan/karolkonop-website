@@ -49,7 +49,7 @@ All secrets come from the environment; there is no config file. `npm start` load
 `karolkonop-website-express-app.js`:
 
 - renders `views/index.ejs` at `/` (`/index.html` → 301), serves `public/` statically, catch-all renders `views/404.ejs` with 404
-- vamude-kit: `/healthz` (status, version, commit), version in the footer, visit statistics in `data/stats.sqlite` with the panel at `/stats` (`STATS_PASSWORD` in `.env`; empty = panel off)
+- vamude-kit: `/healthz` (status, version, commit), version in the footer, visit statistics in `data/stats.sqlite`, admin panel `/kierownik` (Google sign-in, `GOOGLE_CLIENT_ID` + `ADMIN_EMAILS` in `.env`) with statistics at `/kierownik/stats`
 - `POST /send-email` — validates the payload, checks a honeypot field, rate-limits to 5/hour per IP, then relays via nodemailer
 
 Hardening that is easy to break without noticing:
