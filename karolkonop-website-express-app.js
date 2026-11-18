@@ -3,7 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const nodemailer = require('nodemailer');
-const { readVersion, healthz, createStats } = require('vamude-kit');
+const { readVersion, healthz, createStats, createAdmin } = require('vamude-kit');
 
 const REQUIRED_ENV = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS', 'MAIL_TO'];
 const missing = REQUIRED_ENV.filter((key) => !process.env[key]);
@@ -32,8 +32,10 @@ app.set('views', path.join(__dirname, 'views'));
 const version = readVersion({ root: __dirname });
 app.locals.appVersion = version;
 
-// Visit statistics (vamude-kit): panel at /stats, password STATS_PASSWORD in .env.
+// Admin panel /kierownik (Google sign-in, ADMIN_EMAILS) and visit statistics at
+// /kierownik/stats (vamude-kit).
 const stats = createStats({ file: process.env.STATS_DB || path.join(__dirname, 'data', 'stats.sqlite') });
+const admin = createAdmin({ stats });
 
 app.use(
 	helmet({
@@ -64,8 +66,10 @@ app.use(
 );
 
 app.get('/healthz', healthz({ version, checks: { stats: () => stats.db.prepare('SELECT 1').get() } }));
+app.use(admin.middleware);
 app.use(stats.middleware);
 app.use(stats.panel);
+app.use(admin.router);
 
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));

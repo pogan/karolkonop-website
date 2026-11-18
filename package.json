@@ -23,7 +23,7 @@
     "express-rate-limit": "^8.2.1",
     "helmet": "^8.1.0",
     "nodemailer": "^9.0.3",
-    "vamude-kit": "https://github.com/pogan/vamude-kit/archive/refs/tags/v1.0.0.tar.gz"
+    "vamude-kit": "https://github.com/pogan/vamude-kit/archive/31398a9a514153507a0e3fde625aad74cde48cd9.tar.gz"
   },
   "devDependencies": {
     "png-to-ico": "^3.0.2",

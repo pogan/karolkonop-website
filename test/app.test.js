@@ -13,7 +13,8 @@ Object.assign(process.env, {
 	MAIL_TO: 'test@example.com',
 	STATS_DB: path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'karolkonop-')), 'stats.sqlite'),
 });
-delete process.env.STATS_PASSWORD;
+process.env.ADMIN_EMAILS = 'admin@example.com';
+process.env.GOOGLE_CLIENT_ID = 'test.apps.googleusercontent.com';
 const app = require('../karolkonop-website-express-app');
 
 let base, server;
@@ -55,6 +56,26 @@ test('pliki statyczne, stary adres /index.html i strona 404', async () => {
 	assert.equal((await fetch(`${base}/views/index.ejs`)).status, 404);
 });
 
-test('panel statystyk wyłączony bez STATS_PASSWORD', async () => {
+test('panel /kierownik: logowanie Google, statystyki tylko dla admina', async () => {
+	const login = await fetch(`${base}/kierownik`);
+	assert.equal(login.status, 200);
+	assert.match(await login.text(), /data-client_id="test\.apps\.googleusercontent\.com"/);
+	const stats = await fetch(`${base}/kierownik/stats`, { redirect: 'manual' });
+	assert.equal(stats.status, 303);
+	assert.equal(stats.headers.get('location'), '/kierownik?next=%2Fkierownik%2Fstats');
+	assert.equal((await fetch(`${base}/kierownik/stats.json`)).status, 401);
 	assert.equal((await fetch(`${base}/stats`)).status, 404);
+});
+
+test('podgląd: PREVIEW_LOGIN daje wejście do statystyk bez Google', async () => {
+	process.env.PREVIEW_LOGIN = 'true';
+	await fetch(`${base}/`, { headers: { 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 'accept-language': 'pl' } });
+	await new Promise((r) => setTimeout(r, 20));
+	const res = await fetch(`${base}/kierownik/podglad`, { method: 'POST', redirect: 'manual' });
+	assert.equal(res.status, 303);
+	const cookie = res.headers.get('set-cookie').split(';')[0];
+	const json = await fetch(`${base}/kierownik/stats.json`, { headers: { cookie } });
+	assert.equal(json.status, 200);
+	assert.ok((await json.json()).pages.some((p) => p.name === '/'));
+	delete process.env.PREVIEW_LOGIN;
 });
